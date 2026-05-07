@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHire Jobs</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark px-4">
+        <a class="navbar-brand" href="#">SmartHire</a>
+        <div>
+            {% if user.is_superuser %}
+             <a href="/jobs/manage-applications/" class="btn btn-warning me-2">
+               Manage Applications
+             </a>
+            {% else %}
+             <a href="/jobs/my-applications/" class="btn btn-primary me-2">
+               My Applications
+             </a>
+            {% endif %}
+              <a href="/accounts/logout/" class="btn btn-danger">
+                Logout
+              </a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+
+        <h1 class="mb-4 text-center">
+            Available Jobs
+        </h1>
+        <form method="GET" class="mb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <input type="text"
+                    name="q"
+                    class="form-control"
+                    placeholder="Search jobs by title or company">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-dark w-100">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            {% if jobs %}
+               {% for job in jobs %}
+
+               <div class="col-md-6">
+                 <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            {{ job.title }}
+                        </h3>
+                        <h5 class="text-muted">
+                            {{ job.company }}
+                        </h5>
+                        <p class="mt-3">
+                            {{ job.description }}
+                        </p>
+                        <h6>
+                            Salary: ₹{{ job.salary }}
+                        </h6>
+                        {% if not user.is_superuser %}
+                           {% if job.id in applied_jobs %}
+                              <button class="btn btn-success mt-3" disabled>
+                                   Already Applied
+                                </button>
+                            {% else %}
+                              <a href="/jobs/apply/{{ job.id }}/"class="btn btn-primary mt-3">
+                                Apply Now
+                              </a>
+                            {% endif %}
+                        {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+    <div class="text-center mt-5">
+
+        <h3 class="text-danger">
+            No jobs found
+        </h3>
+
+    </div>
+
+{% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
