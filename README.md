@@ -47,7 +47,27 @@ This project demonstrates backend development concepts such as authentication, r
 
 # Project Screenshots
 
-Add screenshots here after deployment.
+## Login Page
+
+![Login Page](screenshots/login-page.png)
+
+---
+
+## Job Listings Page
+
+![Jobs Page](screenshots/jobs-page.png)
+
+---
+
+## My Apllication Page
+
+![My Application Page](screenshots/myapplication-page.png)
+
+---
+
+## API Output
+
+![API Output](screenshots/api-output.png)
 
 Example:
 
