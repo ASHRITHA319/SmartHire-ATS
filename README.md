@@ -59,7 +59,7 @@ This project demonstrates backend development concepts such as authentication, r
 
 ---
 
-## My Apllication Page
+## My Application Page
 
 ![My Application Page](screenshots/myapplication-page.png)
 
@@ -73,7 +73,6 @@ Example:
 
 * Login Page
 * Job Listings Page
-* Recruiter Dashboard
 * My Applications Page
 * API Output
 
