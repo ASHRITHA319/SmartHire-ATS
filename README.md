@@ -55,7 +55,7 @@ This project demonstrates backend development concepts such as authentication, r
 
 ## Job Listings Page
 
-![Jobs Page](screenshots/jobs-page.png)
+![Jobs Page](screenshots/job-page.png)
 
 ---
 
